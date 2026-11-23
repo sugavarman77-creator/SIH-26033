@@ -1,13 +1,14 @@
-# FarmBridge: Fair-Price Produce Matching and Shared Logistics
+# Smart India Hackathon 2026
 
-**Smart India Hackathon 2026 | Problem Statement 26033**  
-**Date:** 22 November 2026  
-**Reference Number:** 26015785  
-**Applicant:** Sugavarman K P
+**Date:** 22 November 2026
+
+**Reference Number:** 26015785
+
+**Name:** Sugavarman K P
 
 ## Problem Title
 
-Multiple intermediaries reduce farmers' earnings and increase consumer prices.
+**SIH 26033: Multiple intermediaries reduce farmers' earnings and increase consumer prices.**
 
 ## Problem Creator's Organization
 
@@ -19,110 +20,202 @@ Agriculture, FoodTech & Rural Development
 
 ## Problem Description
 
-Farmers and Farmer Producer Organisations (FPOs) can lose bargaining power and price visibility when produce passes through several trading and handling stages. Aggregation, grading, storage, transport, and market access provide real services, so the goal is not to remove every intermediary. The goal is to make avoidable costs visible, connect producer groups to suitable buyers, and coordinate logistics so farmers can compare the net return before accepting a sale.
+Farmers often depend on multiple intermediaries to sell their agricultural products. This reduces their profit and increases the final price paid by consumers.
 
-The SIH problem asks for a digital marketplace that connects farmers/FPOs with consumers and bulk buyers, provides logistics support, and uses AI for demand forecasting and route optimization. The intended benefits are better prices for farmers, lower prices for consumers, and fewer supply-chain inefficiencies.
+Small farmers also face difficulties in finding buyers, transporting products, and getting fair prices.
 
-## Proposed Solution: FarmBridge
+The main objective is to create a digital marketplace that:
 
-FarmBridge is a mobile-first marketplace and shared-logistics coordinator for FPOs, farmer groups, local retailers, restaurants, hostels, institutional kitchens, and nearby consumer groups. It focuses on completing a dependable sale after produce is listed: matching compatible supply and demand, making every estimated charge visible, and planning shared collection and delivery.
+- Connects farmers and Farmer Producer Organisations (FPOs) directly with buyers.
+- Provides affordable logistics and transportation.
+- Uses AI-based demand forecasting.
+- Optimizes delivery routes.
+- Improves transparency in agricultural trading.
 
-A farmer or FPO listing records the crop, quantity, grade, harvest window, collection point, photos or weigh-slip evidence, and minimum acceptable farm-gate price. Buyers post quantity-backed requests with a delivery area and date. FarmBridge filters out infeasible matches, estimates packing, handling, and transport costs, then ranks eligible offers by expected net farmer return, freshness fit, distance, and buyer fulfilment history. The FPO reviews the itemised calculation and accepts, rejects, or waits; the platform never sets the farmer's reserve price or commits a sale automatically.
+## Proposed Solution – FarmBridge
 
-### Main workflow
+FarmBridge is a digital agricultural marketplace designed to connect farmers, FPOs, retailers, restaurants, and bulk buyers.
 
-1. A farmer creates a listing with local-language text, a voice-assisted form, or help from an FPO operator.
-2. The FPO weighs and grades the lot at a collection point and records available evidence.
-3. Nearby retailers and institutional or consumer buyers post demand with quantity, grade, delivery area, and date.
-4. FarmBridge checks crop, quantity, date, grade, service area, and buyer status, then shows eligible offers with the expected net payout and itemised costs.
-5. The FPO confirms an offer. The logistics planner groups accepted orders into a feasible route based on vehicle capacity, pickup windows, delivery windows, and perishability.
-6. Both parties receive an order record and status updates. Actual weight, delivery, cost, settlement, and any dispute are recorded against the order.
+It helps farmers find suitable buyers, compare offers, and reduce unnecessary supply-chain costs.
 
-### How it addresses the problem
+### How FarmBridge Works
 
-- **Better farmer price visibility:** the FPO sees the expected payout after disclosed charges before accepting an offer.
-- **Fewer avoidable trading hops:** producer groups can reach local retailers and bulk buyers directly while still paying for genuine logistics and handling services.
-- **Economical small-lot sales:** compatible lots can be pooled so small producers can serve buyers that need more volume.
-- **Lower delivery cost where pooling works:** route suggestions allocate estimated transport costs across compatible orders and show whether consolidation reduces cost.
-- **Reduced uncertainty:** demand history helps FPOs plan listing and collection windows. Unsold lots remain visible for another buyer or the FPO's usual market channel.
-- **Farmer control and accountability:** FPOs retain the sale decision; price, weight, charges, delivery, and settlement changes have an audit trail.
+1. **Farmer Registration:** Farmers and FPOs register and upload their crop details, quantity, quality, and expected price.
+2. **Product Verification:** FPO operators verify the quantity and quality of agricultural products.
+3. **Buyer Connection:** Retailers, restaurants, hostels, and other buyers post their requirements.
+4. **Smart Matching:** FarmBridge identifies suitable buyers based on crop type, quantity, location, and delivery requirements.
+5. **Price Comparison:** Farmers can compare offers and view transportation and handling charges.
+6. **Shared Logistics:** The system combines nearby orders to reduce transportation expenses.
+7. **Order Tracking:** Farmers and buyers can track orders and confirm delivery and payment records.
 
-### Innovation and uniqueness
+### How It Solves the Problem
 
-FarmBridge ranks offers by expected net farmer return rather than headline price alone. Its open-book cost card separates produce price, grade, quantity, packing, handling, transport, any platform fee, and estimated farmer payout. Small-lot pooling keeps each farmer's contribution and payout traceable. Matching and routing provide recommendations for human review; they do not make binding price or sale decisions.
+- Reduces unnecessary intermediaries.
+- Helps farmers receive better returns.
+- Provides transparent pricing.
+- Connects farmers directly with bulk buyers.
+- Reduces transportation costs through shared delivery.
+- Helps consumers access agricultural products at competitive prices.
+
+### Innovation and Uniqueness
+
+FarmBridge introduces a **Net Farmer Return Ranking System**.
+
+Instead of displaying only the highest selling price, it calculates the estimated amount a farmer receives after transportation, packaging, handling, and other charges.
+
+It also supports small-farmer product pooling, allowing multiple farmers to combine their products to fulfil larger buyer requirements.
+
+The final selling decision always remains with the farmer or FPO.
 
 ## Technical Approach
 
-### Architecture and technologies
+### Technologies to Be Used
 
-- **Farmer/FPO and buyer interfaces:** responsive React Progressive Web App with English and Tamil UI, low-bandwidth screens, offline draft listings, and queued synchronization.
-- **Operator console:** web tools for FPO-assisted onboarding, weighing, grading, order confirmation, disputes, and route review.
-- **API and access control:** Python FastAPI or Django REST Framework with validated requests, role-based permissions, and an auditable order workflow.
-- **Data:** PostgreSQL with PostGIS for lots, buyer requests, service areas, and distance queries; object storage for produce photos and delivery evidence.
-- **Matching:** deterministic eligibility checks first, followed by a published score using net return, freshness/date fit, distance or delivery cost, and buyer fulfilment history.
-- **Demand estimation:** begin with a seasonal moving-average baseline by crop, service area, and week. Evaluate a simple tree-based model only after enough clean, dated order history exists. Show coverage and uncertainty and allow operator review.
-- **Route planning:** OR-Tools or an equivalent vehicle-routing solver with capacity, pickup and delivery windows, and perishability constraints. A logistics operator confirms each suggested route before dispatch.
-- **Notifications and security:** SMS or an approved messaging adapter for status updates; HTTPS, password hashing or an approved identity provider, least-privilege roles, audit logs, encrypted backups, and data minimisation.
+| Component | Technology |
+|---|---|
+| Frontend | HTML, CSS, JavaScript, React |
+| Backend | Python, FastAPI |
+| Database | PostgreSQL |
+| Location Services | PostGIS, Maps API |
+| AI/ML | Python, Scikit-learn |
+| Route Optimization | Google OR-Tools |
+| Communication | SMS / Notifications |
+| Hosting | Cloud Hosting |
 
-### Data and model safeguards
+### System Architecture
 
-Forecasts should use pilot records such as dated buyer requests and completed orders by crop, grade, quantity, and service area. Public market-price series can support price context but are not a substitute for local demand labels. If history is insufficient, FarmBridge will show the baseline and its limitations instead of presenting an unreliable model output. Forecasts will never promise a price or automatically commit produce for sale.
+```mermaid
+flowchart TD
+    A[Farmers / FPOs] --> B[FarmBridge Platform]
+    C[Buyers / Retailers] --> B
+    B --> D[Product Listing]
+    B --> E[Buyer Requirements]
+    D --> F[Smart Matching System]
+    E --> F
+    F --> G[Price Comparison]
+    G --> H[Farmer Approval]
+    H --> I[Shared Logistics]
+    I --> J[Route Optimization]
+    J --> K[Delivery and Tracking]
+    K --> L[Order Completion]
+    B --> M[AI Demand Forecasting]
+    M --> D
+```
 
-### Implementation stages
+### Implementation Methodology
 
-1. Build listings, buyer requests, assisted FPO workflows, and transparent offer comparisons.
-2. Add order status, evidence, settlement records, and operator-confirmed route suggestions.
-3. Run a compact pilot and measure price, fulfilment, logistics cost, and data quality.
-4. Add model comparisons only when the pilot has enough reliable history; integrate external platforms or payment services only with partner approval and field validation.
+**Phase 1 – User Registration**
+
+Develop registration and login facilities for farmers, FPOs, and buyers.
+
+**Phase 2 – Product Management**
+
+Allow farmers to upload crop details, quantity, quality, images, and expected prices.
+
+**Phase 3 – Smart Buyer Matching**
+
+Match agricultural products with suitable buyers based on their requirements.
+
+**Phase 4 – AI-Based Demand Forecasting**
+
+Analyse previous orders and seasonal demand to estimate future crop requirements.
+
+**Phase 5 – Logistics Optimization**
+
+Use route optimization to combine nearby deliveries and reduce transportation costs.
+
+**Phase 6 – Order Management**
+
+Provide order tracking, delivery confirmation, and transaction records.
 
 ## Feasibility and Viability
 
-### Pilot feasibility
+### Feasibility of the Idea
 
-Start in one district with two or three FPOs, a small set of perishable crops, fixed collection points, and nearby repeat buyers such as retailers or institutional kitchens. Use existing Android phones, assisted onboarding, a hosted web service, and local transport partners. Keep match and route confirmation manual during the first pilot stage. Use clearly labelled synthetic records for the demonstrator; do not claim guaranteed demand, guaranteed prices, live payments, or production forecasting before validation.
+FarmBridge can be developed using existing web technologies, smartphones, and cloud-based services.
 
-### Risks and mitigations
+The initial implementation can focus on a small geographical area with a few FPOs, farmers, and local buyers.
 
-| Risk | Mitigation |
-|---|---|
-| Quantity or grade mismatch | FPO-assisted weighing, a simple grade checklist, photo or weigh-slip evidence, and buyer acceptance rules |
-| Low adoption or weak connectivity | Tamil-language PWA, assisted onboarding, phone/SMS updates, and offline draft sync |
-| Too few orders for pooled routes | Begin in a compact area, show whether pooling lowers cost, and keep existing channels available for unmatched lots |
-| Forecast error or seasonal shock | Start with a baseline, display uncertainty, measure error, and never auto-commit a sale from a forecast |
-| Cancellations or side-selling | Confirmation reminders, clear reservation windows, fulfilment history, and human-mediated dispute handling |
-| Perishability or delivery delay | Short delivery windows, vehicle capacity limits, cold-chain flags where needed, and fallback buyer/channel options |
-| Hidden fees or price manipulation | Disclose every charge before acceptance and retain a change log for price, weight, and payout records |
-| Privacy or account misuse | Minimise personal data, use role-based access, secure backups, retention rules, and account recovery safeguards |
-| Local market-rule differences | Configure the pilot for local requirements and obtain market-partner and legal review before expansion |
+It does not require farmers to purchase expensive hardware.
+
+### Potential Challenges
+
+1. Limited internet connectivity in rural areas.
+2. Lack of digital awareness among some farmers.
+3. Differences in product quality and quantity.
+4. Transportation and delivery difficulties.
+5. Seasonal changes in agricultural demand.
+6. Trust and payment-related issues.
+
+### Solutions to Overcome Challenges
+
+- Provide Tamil and other regional language support.
+- Develop a mobile-friendly and low-bandwidth interface.
+- Allow FPO operators to assist farmers.
+- Introduce product quality verification.
+- Use shared transportation facilities.
+- Maintain transparent order and payment records.
 
 ### Sustainability
 
-During the pilot, operations can be funded through a grant, an institutional buyer subscription, or an FPO service contract. If a transaction fee is introduced later, disclose it before acceptance and assess its effect on farmer net returns. Keep core listing and offer-comparison functions usable on low-end phones.
+The platform can initially operate through FPO partnerships, institutional buyer subscriptions, or pilot project funding.
+
+Future expansion can include additional crops, districts, and logistics partners.
 
 ## Impact and Benefits
 
-The pilot will compare FarmBridge orders with the same FPO's usual-channel sales for comparable crops and weeks. Results will include sample sizes and will be reported as pilot observations, not proven causal effects.
+### Benefits to Farmers
 
-- **Farmer economics:** net amount received per kilogram, time from listing to sale, and share of lots sold within the intended window.
-- **Buyer economics:** delivered price per kilogram, fill rate, and repeat purchase rate.
-- **Operations:** transport cost per kilogram, vehicle utilisation, delivery timeliness, and spoilage or quality-rejection rate.
-- **Inclusion:** active smallholder share, assisted versus self-service listings, Tamil-language use, and successful low-connectivity syncs.
-- **Trust:** disputes per 100 orders, payout completion time, and orders with complete price and weight records.
+- Better price visibility.
+- Improved bargaining opportunities.
+- Direct access to bulk buyers.
+- Reduced transportation expenses.
+- Better control over selling decisions.
 
-Expected benefits to validate are clearer price discovery and bargaining for farmers, more predictable local sourcing for buyers, lower per-order transport costs when trips are successfully pooled, and less avoidable handling. Environmental benefits will be claimed only if measured route distance and load data show a reduction.
+### Benefits to Consumers
 
-## Prototype Scope and Demonstration
+- Competitive product prices.
+- Better access to locally sourced produce.
+- Improved product availability.
+- More transparent purchasing.
 
-The first demonstrator includes FPO login, create/edit lot, buyer demand request, transparent offer comparison, accept/reject action, basic multi-stop route suggestion, order status, and a dashboard of farmer net return and delivery cost.
+### Economic Benefits
 
-Demo flow: create two synthetic lots and one nearby buyer request; show eligibility checks and itemised net-return comparison; accept an offer as the FPO; display the pooled route, vehicle capacity, estimated distance, and cost allocation; record delivery and settlement; then show the dashboard and demand baseline with its data coverage. All sample records are synthetic and will be labelled as such.
+- Reduced avoidable supply-chain costs.
+- Improved farmer income opportunities.
+- Better market connections.
+- Efficient agricultural distribution.
 
-Government-platform integration, live payment processing, and production-grade forecasting are future work requiring partner access, compliance review, and field validation.
+### Environmental Benefits
+
+- Reduced unnecessary transportation.
+- Better vehicle utilization.
+- Potential reduction in food wastage.
+- Improved delivery planning.
+
+### Expected Impact Measurement
+
+The pilot project will measure:
+
+- Average farmer earnings per kilogram.
+- Transportation cost per kilogram.
+- Time taken to complete an order.
+- Percentage of successful deliveries.
+- Buyer satisfaction.
+- Reduction in avoidable logistics expenses.
+
+These results will be evaluated using actual pilot data.
 
 ## Research and References
 
-1. SIH 26033 workshop template and problem statement: https://github.com/selvasachein/SIH-26033
-2. e-NAM, information for FPOs: https://www.enam.gov.in/web/stakeholders-Involved/fpos
-3. e-NAM, trading and logistics features: https://www.enam.gov.in/web/trading-details
-4. Department of Consumer Affairs, Price Monitoring Division: https://consumeraffairs.gov.in/pages/price-monitoring-division
-5. Small Farmers' Agri-Business Consortium (SFAC), State Level Consortium of FPOs: https://sfacindia.com/State-Level-Producer-Companies.aspx
+1. Smart India Hackathon 2026 – Problem Statement 26033: https://github.com/selvasachein/SIH-26033
+2. e-NAM – National Agriculture Market: https://www.enam.gov.in/
+3. Department of Consumer Affairs: https://consumeraffairs.gov.in/
+4. Small Farmers' Agribusiness Consortium (SFAC): https://sfacindia.com/
+5. Google OR-Tools – Route Optimization: https://developers.google.com/optimization
+
+---
+
+**Project Name: FarmBridge**
+
+**Tagline: Connecting Farmers Directly to Fair Markets.**
