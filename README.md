@@ -1,5 +1,5 @@
 # Smart India Hackathon 2026
----
+
 **Date:** 22 November 2026
 ---
 **Reference Number:** 26015785
